@@ -1,11 +1,37 @@
 {
   "expo": {
-    "name": "ciboulette-royale",
-    "slug": "ciboulette-royale",
+    "name": "Ciboulette Royale",
+    "slug": "CibouletteRoyale",
     "version": "1.0.0",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
     "assetBundlePatterns": [
       "**/*"
-    ]
-  },
-  "name": "ciboulette-royale"
+    ],
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "googleServicesFile": "environment/google-services.json",
+      "package": "com.estiam.ciboulette",
+      "versionCode": 1
+    },
+    "ios": {
+      "bundleIdentifier": "com.estiam.ciboulette",
+      "buildNumber": "1.0.0",
+      "googleServicesFile": "environment/GoogleService-Info.plist",
+      "supportsTablet": true
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    }
+  }
 }
