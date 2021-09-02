@@ -19,7 +19,7 @@ export default class App extends React.Component {
                 <StatusBar/>
                 <Router>
                     <View style={styles.container}>
-                        <Text>Open up App.js to start working on your app!</Text>
+                        <Text>Automatic pull request working</Text>
                         {/* <Route exact path="/" component={} */}
                     </View>
 
