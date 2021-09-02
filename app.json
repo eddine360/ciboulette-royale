@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "ciboulette-royale",
+    "slug": "ciboulette-royale",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "ciboulette-royale"
+}
