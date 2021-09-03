@@ -3,7 +3,7 @@ import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { Link } from '../routing/routing';
 
 
-export default class App extends React.Component {
+export default class Header extends React.Component {
     constructor() {
         super()
         this.state = {
