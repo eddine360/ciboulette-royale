@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, StatusBar } from 'react-native';
+import { StyleSheet, Text, View, StatusBar, TouchableOpacity } from 'react-native';
 import { Router, Route, Link } from './components/routing/routing';
 import Header from './components/header/header';
 
@@ -8,9 +8,9 @@ export default class App extends React.Component {
     constructor() {
         super()
         this.state = {
-            // Variables d'etats ici
         }
     }
+
 
     render() {
 
@@ -20,7 +20,8 @@ export default class App extends React.Component {
                 <Router>
                     <Header/>
                     <View style={styles.container}>
-                        <Text>Automatic pull request working</Text>
+
+                        <Text style={{color: 'white', fontWeight:'bold'}}>Automatic pull request working</Text>
                         {/* <Route exact path="/" component={} */}
                     </View>
 
@@ -36,5 +37,17 @@ const styles = StyleSheet.create({
         backgroundColor: '#606060',
         alignItems: 'center',
         justifyContent: 'center',
-    }
+        zIndex: 0,
+    },
+    animatedBox: {
+        flex: 1,
+        backgroundColor: "#38C8EC",
+        padding: 10
+      },
+      body: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#F04812'
+      }
 });
