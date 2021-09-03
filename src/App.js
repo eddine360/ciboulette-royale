@@ -1,6 +1,5 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, StatusBar } from 'react-native';
 import { Router, Route, Link } from './components/routing/routing';
 import Header from './components/header/header';
 
@@ -17,9 +16,9 @@ export default class App extends React.Component {
 
         return (
             <>
-                <StatusBar/>
-                <Header/>
+                <StatusBar backgroundColor="#383838"/>
                 <Router>
+                    <Header/>
                     <View style={styles.container}>
                         <Text>Automatic pull request working</Text>
                         {/* <Route exact path="/" component={} */}
@@ -34,8 +33,8 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
+        backgroundColor: '#606060',
         alignItems: 'center',
         justifyContent: 'center',
-    },
+    }
 });
