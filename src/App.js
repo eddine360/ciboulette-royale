@@ -1,34 +1,40 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, StatusBar, TouchableOpacity } from 'react-native';
 import { Router, Route, Link } from './components/routing/routing';
 import Header from './components/header/header';
 
-export default class App extends React.Component {
+import { getDetailsForLyon } from './services/lyon';
 
-    constructor() {
-        super()
-        this.state = {
-        }
-    }
+function App() {
+    const [list, setList] = useState([]);
 
+    useEffect(() => {
+        let mounted = true;
 
-    render() {
+        // Load map details for Lyon when the component is loading
+        getDetailsForLyon()
+            .then(items => {
+                if (mounted) {
+                    setList(items.features);
+                }
+            });
+        return () => mounted = false;
+    }, []);
 
-        return (
-            <>
-                <StatusBar backgroundColor="#383838"/>
-                <Router>
-                    <Header/>
-                    <View style={styles.container}>
+    return (
+        <>
+            <StatusBar backgroundColor="#383838"/>
+            <Router>
+                <Header/>
+                <View style={styles.container}>
 
-                        <Text style={{color: 'white', fontWeight:'bold'}}>Automatic pull request working</Text>
-                        {/* <Route exact path="/" component={} */}
-                    </View>
+                    <Text style={{ color: 'white', fontWeight: 'bold' }}>Automatic pull request working</Text>
+                    {/* <Route exact path="/" component={} */}
+                </View>
 
-                </Router>
-            </>
-        );
-    }
+            </Router>
+        </>
+    );
 }
 
 const styles = StyleSheet.create({
@@ -43,11 +49,13 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: "#38C8EC",
         padding: 10
-      },
-      body: {
+    },
+    body: {
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: '#F04812'
-      }
+    }
 });
+
+export default App;
