@@ -1,0 +1,257 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "features": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "Feature"
+            ]
+          },
+          "properties": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "idsitra": {
+                "type": "string"
+              },
+              "nom": {
+                "type": "string"
+              },
+              "theme": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "type": {
+                "type": "string"
+              },
+              "address": {
+                "type": "object",
+                "properties": {
+                  "postalCode": {
+                    "type": "string"
+                  },
+                  "streetAddress": {
+                    "type": "string"
+                  },
+                  "addressCountry": {
+                    "type": "string",
+                    "enum": [
+                      "FR"
+                    ]
+                  },
+                  "addressLocality": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "postalCode",
+                  "streetAddress",
+                  "addressCountry",
+                  "addressLocality"
+                ]
+              },
+              "insee": {
+                "type": "string"
+              },
+              "descrcourtfr": {
+                "type": "string"
+              },
+              "descrdetailfr": {
+                "type": "string"
+              },
+              "contact": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "Téléphone": {
+                      "type": "string"
+                    },
+                    "Mél": {
+                      "type": "string"
+                    },
+                    "Site web (URL)": {
+                      "type": "string"
+                    },
+                    "Page facebook": {
+                      "type": "string"
+                    },
+                    "Tripadvisor": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "ouvertureenclair": {
+                "type": "string"
+              },
+              "ouverture": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "datefin": {
+                      "type": "string"
+                    },
+                    "datedebut": {
+                      "type": "string"
+                    },
+                    "horairefin": {
+                      "type": "null"
+                    },
+                    "horairedebut": {
+                      "type": "null"
+                    }
+                  },
+                  "required": [
+                    "datefin",
+                    "datedebut",
+                    "horairefin",
+                    "horairedebut"
+                  ]
+                }
+              },
+              "tarifsenclair": {
+                "type": "string"
+              },
+              "tarifmin": {
+                "type": "string"
+              },
+              "tarifmax": {
+                "type": "string"
+              },
+              "modepaiemt": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "American Express",
+                    "Carte bancaire/crédit",
+                    "Chèque",
+                    "Chèque Vacances",
+                    "Espèces"
+                  ]
+                }
+              },
+              "illustrations": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "url": {
+                      "type": "string"
+                    },
+                    "taille": {
+                      "type": "integer"
+                    },
+                    "hauteur": {
+                      "type": "integer"
+                    },
+                    "largeur": {
+                      "type": "integer"
+                    },
+                    "urlFiche": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "url",
+                    "taille",
+                    "hauteur",
+                    "largeur",
+                    "urlFiche"
+                  ]
+                }
+              },
+              "producteur": {
+                "type": "string",
+                "enum": [
+                  "Lyon Tourisme et Congrès / ONLYLYON Tourisme"
+                ]
+              },
+              "datecreation": {
+                "type": "string"
+              },
+              "datemaj": {
+                "type": "string"
+              },
+              "gid": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "id",
+              "idsitra",
+              "nom",
+              "theme",
+              "type",
+              "address",
+              "insee",
+              "descrcourtfr",
+              "descrdetailfr",
+              "contact",
+              "ouvertureenclair",
+              "ouverture",
+              "tarifsenclair",
+              "tarifmin",
+              "tarifmax",
+              "modepaiemt",
+              "illustrations",
+              "producteur",
+              "datecreation",
+              "datemaj",
+              "gid"
+            ]
+          },
+          "geometry": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "Point"
+                ]
+              },
+              "coordinates": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                }
+              }
+            },
+            "required": [
+              "type",
+              "coordinates"
+            ]
+          }
+        },
+        "required": [
+          "type",
+          "properties",
+          "geometry"
+        ]
+      }
+    }
+  },
+  "required": [
+    "type",
+    "name",
+    "features"
+  ]
+}
