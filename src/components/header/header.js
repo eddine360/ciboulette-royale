@@ -23,9 +23,14 @@ export default class Header extends React.Component {
   
     drawerContent = () => {
       return (
-        <TouchableOpacity onPress={this.toggleOpen} style={styles.animatedBox}>
-          <Text>Close</Text>
-        </TouchableOpacity>
+        <View style={styles.animatedBox}>
+          <TouchableOpacity onPress={this.toggleOpen} style={styles.ButtonStyle}>
+            <Text style={styles.textParam}>Home</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={this.toggleOpen} style={styles.ButtonStyle}>
+            <Text style={styles.textParam}>Settings</Text>
+          </TouchableOpacity>
+        </View>
       );
     };
   
@@ -85,8 +90,7 @@ const styles = StyleSheet.create({
   },
   textParam: {
     ...textColor,
-    fontWeight: 'bold',
-    backgroundColor: 'red'
+    fontWeight: 'bold'
   },
   container: {
     flex: 1,
@@ -101,11 +105,24 @@ const styles = StyleSheet.create({
 animatedBox: { 
     flex: 1,
     backgroundColor: "#383838",
-    padding: 70
+    paddingTop: 70
   },
   body: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  ButtonStyle: {
+    height:100,
+    paddingTop:20,
+    paddingBottom:20, 
+    alignContent:'center', 
+    alignItems:'center',
+    textAlign: 'center',
+    justifyContent: 'center',
+    borderStyle:'solid', 
+    borderBottomWidth:2,
+    width: 'fill',
+    marginRight: 1,
   }
 });
