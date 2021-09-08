@@ -2,7 +2,7 @@ import React from 'react';
 import { View, StyleSheet, Text, TouchableOpacity, Platform } from 'react-native';
 import { Link } from '../routing/routing';
 import MenuDrawer from 'react-native-side-drawer'
-
+import Hamburger from 'react-native-animated-hamburger';
 
 // export default Header = props => {
 //   const [open, setOpen] = React.useState(false);
@@ -72,6 +72,12 @@ class Header extends React.Component {
     return (
       <>
             <View style={styles.navBarBg}>
+              <View style={styles.beginEndNavBar}>
+                <Hamburger style="cross" 
+                           active={this.state.active}
+                           onPress={() => this.toggleOpen}
+                           underlayColor="transparent"/>
+              </View>
                   <TouchableOpacity onPress={this.toggleOpen} style={styles.beginEndNavBar}>
                       <Text style={styles.textParam}>{this.state.textBurger}</Text>
                   </TouchableOpacity>          
