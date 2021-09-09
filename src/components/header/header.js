@@ -32,55 +32,48 @@ import Hamburger from 'react-native-animated-hamburger';
 //     textBurger: "Open"
 //   });  
 
-class Header extends React.Component {
-    constructor() {
-      super()
-      this.state = {
-        open: false,
-        textBurger: "Open"
-      }
-    }
+const Header = props => {
+
+    const [state, setState] = React.useState({
+      open: false
+    })
   
     
-    toggleOpen = () => {
-      this.setState({ open: !this.state.open });
-      if(this.state.open === false) {
-        this.setState({textBurger: "Close"})
+    const toggleOpen = () => {
+      if(state.open == false) {
+        setState({...state, open: true})
       } else {
-        this.setState({textBurger: "Open"})
+        setState({...state, open:false})
       }
     };
   
     //Remplacer les TouchableOpacity par des Links de Router si ils doivent rediriger sur d'autres pages
     // <Link to="/" component={TouchableOpacity}>  *** Text / Image ***  </Link>
-    drawerContent = () => {
+    let drawerContent = () => {
       return (
         <View style={styles.animatedBox}>
           <Link to='/' component={TouchableOpacity} style={styles.ButtonStyleTop}>
             <Text style={styles.textParam}>Home</Text>
           </Link>
-          <TouchableOpacity onPress={this.toggleOpen} style={styles.ButtonStyleBottom}>
+          <TouchableOpacity onPress={toggleOpen} style={styles.ButtonStyleBottom}>
             <Text style={styles.textParam}>Faves</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={this.toggleOpen} style={styles.ButtonStyleBottom}>
+          <TouchableOpacity onPress={toggleOpen} style={styles.ButtonStyleBottom}>
             <Text style={styles.textParam}>Settings</Text>
           </TouchableOpacity>
         </View>
       );
     };
-  render() {
     return (
       <>
             <View style={styles.navBarBg}>
               <View style={styles.beginEndNavBar}>
                 <Hamburger style="cross" 
-                           active={this.state.active}
-                           onPress={() => this.toggleOpen}
-                           underlayColor="transparent"/>
+                           active={state.open}
+                           onPress={toggleOpen}
+                           underlayColor="transparent"
+                           color="#FFF"/>
               </View>
-                  <TouchableOpacity onPress={this.toggleOpen} style={styles.beginEndNavBar}>
-                      <Text style={styles.textParam}>{this.state.textBurger}</Text>
-                  </TouchableOpacity>          
                 <Text style={{flex:4}}></Text>
                 <View style={styles.beginEndNavBar}>
                   <Text style={styles.textParam}>logo ?</Text>
@@ -89,8 +82,8 @@ class Header extends React.Component {
             </View>
             <View style={styles.container}>
                 <MenuDrawer 
-                        open={this.state.open} 
-                        drawerContent={this.drawerContent()}
+                        open={state.open} 
+                        drawerContent={drawerContent()}
                         drawerPercentage={25}
                         animationTime={250}
                         overlay={true}
@@ -101,7 +94,6 @@ class Header extends React.Component {
             </View>
       </>
     );
-  }
 
 
 }
@@ -151,6 +143,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     position: "absolute",
+    top: 0,
+    bottom:0,
     zIndex:1,
     paddingTop: 70,
 },
@@ -159,6 +153,8 @@ animatedBox: {
     // backgroundColor: "#383838",
     backgroundColor: "red",
     paddingTop: 70,
+    top: 0,
+    bottom:0
   },
   body: {
     flex: 1,
