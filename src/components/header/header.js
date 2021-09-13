@@ -11,7 +11,7 @@ export default class Header extends React.Component {
           textBurger: "Open",
         }
     }
-    
+
     toggleOpen = () => {
       this.setState({ open: !this.state.open });
       if(this.state.open === false) {
@@ -20,7 +20,7 @@ export default class Header extends React.Component {
         this.setState({textBurger: "Open"})
       }
     };
-  
+
     drawerContent = () => {
       return (
         <TouchableOpacity onPress={this.toggleOpen} style={styles.animatedBox}>
@@ -28,31 +28,31 @@ export default class Header extends React.Component {
         </TouchableOpacity>
       );
     };
-  
+
     render() {
         return (
           <>
                 <View style={styles.navBarBg}>
                       <TouchableOpacity onPress={this.toggleOpen} style={styles.beginEndNavBar}>
                           <Text style={styles.textParam}>{this.state.textBurger}</Text>
-                      </TouchableOpacity>          
-                    <Text style={{flex:4}}></Text>
+                      </TouchableOpacity>
+                    <Link to={'/map'}><Text style={{flex:4}}>Map</Text></Link>
                     <View style={styles.beginEndNavBar}>
                       <Text style={styles.textParam}>logo ?</Text>
                     </View>
 
                 </View>
                 <View style={styles.container}>
-                    <MenuDrawer 
-                            open={this.state.open} 
+                    <MenuDrawer
+                            open={this.state.open}
                             drawerContent={this.drawerContent()}
                             drawerPercentage={25}
                             animationTime={250}
                             overlay={true}
                             opacity={0.4}
                             >
-                      
-                    </MenuDrawer>                 
+
+                    </MenuDrawer>
                 </View>
           </>
         );
@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
     zIndex:1,
     paddingTop: 70,
 },
-animatedBox: { 
+animatedBox: {
     flex: 1,
     backgroundColor: "#383838",
     padding: 70

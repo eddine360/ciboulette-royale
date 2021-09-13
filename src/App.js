@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, StatusBar, TouchableOpacity } from 'react-native';
 import { Router, Route, Link } from './components/routing/routing';
 import Header from './components/header/header';
+import Map from './components/map/map';
 
 import { getDetailsForLyon } from './services/lyon';
 
@@ -18,7 +19,7 @@ function App() {
                     setList(items.features);
                 }
             });
-        return () => mounted = false;
+        return () => { mounted = false; };
     }, []);
 
     return (
@@ -27,9 +28,7 @@ function App() {
             <Router>
                 <Header/>
                 <View style={styles.container}>
-
-                    <Text style={{ color: 'white', fontWeight: 'bold' }}>Automatic pull request working</Text>
-                    {/* <Route exact path="/" component={} */}
+                     <Route exact path="/map" component={Map} />
                 </View>
 
             </Router>
