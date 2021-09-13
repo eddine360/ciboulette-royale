@@ -2,35 +2,7 @@ import React from 'react';
 import { View, StyleSheet, Text, TouchableOpacity, Platform } from 'react-native';
 import { Link } from '../routing/routing';
 import MenuDrawer from 'react-native-side-drawer'
-import Hamburger from 'react-native-animated-hamburger';
-
-// export default Header = props => {
-//   const [open, setOpen] = React.useState(false);
-//   const [state, setState] = React.useState({
-//     open: true,
-//     textBurger: "Open"
-//   });
-
-//   const a = { x: 1, y: 2 };
-//   const b = { ...a, z: 3 };
-//   // b = { x: 1, y: 2, z: 3}
-
-//   const c = [1, 2];
-//   const d = [...c, 3]
-
-//   return (
-//     <View>
-//       <TouchableOpacity onPress={() => setState({ open: false })}></TouchableOpacity>
-//     </View>
-//   )
-// }
-
-
-// const Header = props => {
-//   const [state, setState] = React.useState({
-//     open: true,
-//     textBurger: "Open"
-//   });  
+import Hamburger from 'react-native-hamburger';
 
 const Header = props => {
 
@@ -40,6 +12,7 @@ const Header = props => {
   
     
     const toggleOpen = () => {
+      console.log(state)
       if(state.open == false) {
         setState({...state, open: true})
       } else {
@@ -68,7 +41,7 @@ const Header = props => {
       <>
             <View style={styles.navBarBg}>
               <View style={styles.beginEndNavBar}>
-                <Hamburger style="cross" 
+                <Hamburger style="spinCross" 
                            active={state.open}
                            onPress={toggleOpen}
                            underlayColor="transparent"
@@ -84,7 +57,7 @@ const Header = props => {
                 <MenuDrawer 
                         open={state.open} 
                         drawerContent={drawerContent()}
-                        drawerPercentage={25}
+                        drawerPercentage={45}
                         animationTime={250}
                         overlay={true}
                         opacity={0.4}
@@ -106,14 +79,15 @@ const textColor = {
 }
 
 const ButtonCSS = {
-  height:100,
+  height:75,
   paddingTop:20,
   paddingBottom:20, 
   alignContent:'center', 
   alignItems:'center',
   textAlign: 'center',
   justifyContent: 'center',
-  borderStyle:'solid', 
+  borderStyle:'solid',
+  elevation:1
 }
 
 const styles = StyleSheet.create({
@@ -123,6 +97,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     height: 70,
     zIndex: 2,
+    elevation:2,
     position: "relative"
   },
   beginEndNavBar: {
@@ -146,15 +121,16 @@ const styles = StyleSheet.create({
     top: 0,
     bottom:0,
     zIndex:1,
+    elevation: 1,
     paddingTop: 70,
 },
 animatedBox: { 
     flex: 1,
-    // backgroundColor: "#383838",
-    backgroundColor: "red",
+    backgroundColor: "#383838",
     paddingTop: 70,
     top: 0,
-    bottom:0
+    bottom:0,
+    elevation: 5
   },
   body: {
     flex: 1,

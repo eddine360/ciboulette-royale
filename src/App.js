@@ -38,11 +38,12 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         zIndex: 0,
+        elevation:0
     },
     animatedBox: {
         flex: 1,
         backgroundColor: "#38C8EC",
-        padding: 10
+        padding: 10,
       },
       body: {
         flex: 1,
