@@ -24,16 +24,16 @@ function App() {
     return (
         <>
             <StatusBar backgroundColor="#383838"/>
-            <Header>
                 <Router>
+            <Header>
                     <View style={styles.container}>
 
                         <Text style={{color: 'white', fontWeight:'bold'}}>Automatic pull request working</Text>
                         {/* <Route exact path="/" component={} */}
                     </View>
 
-                </Router>
             </Header>
+                </Router>
         </>
     );
 }
