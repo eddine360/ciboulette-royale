@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, StatusBar, TouchableOpacity } from 'react-native';
 import { Router, Route, Link } from './components/routing/routing';
 import Header from './components/header/header';
-
+import Menu from './components/menuList/menuList'
 import { getDetailsForLyon } from './services/lyon';
 
 function App() {
@@ -28,8 +28,7 @@ function App() {
             <Header>
                     <View style={styles.container}>
 
-                        <Text style={{color: 'white', fontWeight:'bold'}}>Automatic pull request working</Text>
-                        {/* <Route exact path="/" component={} */}
+                        <Route exact path="/" component={Menu}/>
                     </View>
 
             </Header>
