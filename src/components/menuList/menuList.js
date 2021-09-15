@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StyleSheet, Text, TouchableOpacity, Image} from 'react-native';
+import {View, StyleSheet, Text, TouchableOpacity, Image, Touchable} from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 import { Link } from '../routing/routing';
 
@@ -15,17 +15,16 @@ const menuList = props => {
 
         return(
             <>
-                {/* {console.log(item.ville)} */}
-                <View style={styles.cardList}>
+                <Link to="/map?ville=${item.ville}" component={TouchableOpacity} style={styles.cardList}>
                     <View style={styles.villeName}>
                         <Text style={styles.textNomVille}>{item.ville}</Text>
 
                     </View>
-                    <View style={styles.containerFave}>
+                    <TouchableOpacity style={styles.containerFave} onPress={() => console.log(this)}>
                         <Image style={styles.faveIcon} source={fave}/>
-                    </View>
+                    </TouchableOpacity>
 
-                </View>
+                </Link>
             </>
 
         );
@@ -75,7 +74,8 @@ const styles = StyleSheet.create({
         alignContent:"center",
         alignItems: "center",
         borderRadius: 25,
-        backgroundColor:"#383838"
+        backgroundColor:"#383838",
+        zIndex: 2,
     },
     villeName: {
         flex:1,
@@ -93,7 +93,9 @@ const styles = StyleSheet.create({
     faveIcon: {
         height: 50,
         width: 50,
-        tintColor: "grey"
+        tintColor: "grey",
+        zIndex: 3,
+        elevation: 3
     }
 
 });
