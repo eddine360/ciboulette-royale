@@ -1,134 +1,98 @@
-import React from 'react';
-import { View, StyleSheet, Text, TouchableOpacity, Platform } from 'react-native';
+import React from 'react'
+import { View, StyleSheet, Text, TouchableOpacity, Platform, Image } from 'react-native';
 import { Link } from '../routing/routing';
-import MenuDrawer from 'react-native-side-drawer'
-import Hamburger from 'react-native-hamburger';
+
 
 const Header = props => {
 
-    const [state, setState] = React.useState({
-      open: false
+    const [state,setState] = React.useState ({
+
     })
-  
-    
-    const toggleOpen = () => {
-      if(state.open === false) {
-        setState({...state, open: true})
-      } else {
-        setState({...state, open:false})
-      }
-    };
-  
-    //Remplacer les TouchableOpacity par des Links de Router si ils doivent rediriger sur d'autres pages
-    // <Link to="/" component={TouchableOpacity}>  *** Text / Image ***  </Link>
-    let drawerContent = () => {
-      return (
-        <View style={styles.animatedBox}>
-          <Link to='/' component={TouchableOpacity} style={styles.ButtonStyleTop}>
-            <Text style={styles.textParam}>Home</Text>
-          </Link>
-          <TouchableOpacity onPress={() => console.log("cliqué ?")} style={styles.ButtonStyleBottom}>
-            <Text style={styles.textParam}>Faves</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={toggleOpen} style={styles.ButtonStyleBottom}>
-            <Text style={styles.textParam}>Settings</Text>
-          </TouchableOpacity>
-        </View>
-      );
-    };
-    return (
-      <>
-        <View style={styles.container}>
-            <View style={styles.navBarBg}>
-              <View style={styles.beginEndNavBar}>
-                <Hamburger style="spinCross" 
-                           active={state.open}
-                           onPress={toggleOpen}
-                           underlayColor="transparent"
-                           color="#FFF"/>
-              </View>
-                <Text style={{ flex:4 }}></Text>
-                <View style={styles.beginEndNavBar}>
-                  <Text style={styles.textParam}>logo ?</Text>
+
+    var iconHome = require("../../../assets/header/home.png");
+    var iconFave = require("../../../assets/header/fave.png");
+    var iconSettings = require("../../../assets/header/settings.png");
+
+    return(
+        <>
+            <View style={styles.container}>
+                <View style={styles.navBar}>
+                    <View style={styles.navBarBegin}>
+                        <Link to="/" component={TouchableOpacity} style={styles.logoContainer}>
+                            <Text style={styles.textParam}>logo ?</Text>
+                        </Link> 
+                        <Link to="/" component={TouchableOpacity} style={styles.navBarButtonSize}>
+                            <Image style={styles.iconSize} source={iconHome}></Image>
+                            <Text style={styles.textParam}>Home</Text>
+                        </Link>
+                        <Link to="/faves" component={TouchableOpacity} style={styles.navBarButtonSize}>
+                            <Image style={styles.iconSize} source={iconFave}></Image>
+                            <Text style={styles.textParam}>Faves</Text>
+                        </Link>
+                    </View>
+                    <View style={styles.navBarEnd}>
+                        <Link to="/settings" component={TouchableOpacity} style={styles.navBarButtonSize}>
+                            <Image style={styles.iconSize} source={iconSettings}/>
+                            <Text style={styles.textParam}>Settings</Text>
+                        </Link>
+                    </View>
                 </View>
-
+                {props.children}
             </View>
-            <MenuDrawer 
-                    open={state.open} 
-                    drawerContent={drawerContent()}
-                    drawerPercentage={45}
-                    animationTime={250}
-                    overlay={true}
-                    opacity={0.4}
-                    >
-              
-            </MenuDrawer>
-            {props.children}
-            {/* props.children permet de faire en sorte que la balise header puisse englober d'autres composants : <Header>AutreCompo</Header>  */}
-        </View>
-      </>
+        </>
     );
-
-
 }
 
 export default Header;
-const textColor = {
-  color: "white",
-};
-
-const ButtonCSS = {
-  height: 75,
-  paddingTop: 20,
-  paddingBottom: 20,
-  alignContent: "center",
-  alignItems: "center",
-  textAlign: "center",
-  justifyContent: "center",
-  borderStyle: "solid",
-};
-
+const textColor = { color: "white" };
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "red",
-    zIndex: 0, // fait en sorte que le conteneur du header soit en dessous de tout
-  },
-  navBarBg: {
-    flexDirection: "row",
-    backgroundColor: "#383838",
-    justifyContent: "space-between",
-    height: 70,
-    zIndex: 2, // fait en sorte que la navbar soit au-desus du reste
-  },
-  beginEndNavBar: {
-    flex: 1,
-    alignContent: "center",
-    textAlign: "center",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: 5,
-  },
-  textParam: {
-    ...textColor,
-    fontWeight: "bold",
-  },
-  animatedBox: {
-    flex: 1,
-    backgroundColor: "#383838",
-  },
-  body: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  ButtonStyleTop: {
-    ...ButtonCSS,
-    borderTopWidth: 2,
-    borderBottomWidth: 2,
-    marginTop: 70,
-  },
-  ButtonStyleBottom: {
-    ...ButtonCSS,
-    borderBottomWidth: 2,
-  }});
+    container:{
+        flex:1,
+        zIndex: 0,
+    },
+    navBar: {
+        flexDirection: 'row',
+        backgroundColor: "#383838",
+        justifyContent: "space-between",
+        height: 70,
+        zIndex: 2,
+        padding: 5,
+        alignItems:"center"
+    },
+    navBarBegin: {
+        flexDirection: 'row',
+        justifyContent: "flex-start",
+        zIndex: 2,
+        alignItems: 'center'
+    },
+    navBarEnd: {
+        flexDirection:"row",
+        justifyContent: "flex-end",
+        zIndex: 2,
+        alignItems: "center"
+    },
+    textParam: {
+        ...textColor,
+        fontWeight: "bold"
+    },
+    logoSize: {
+        width: 100,
+        height: 100,
+    },
+    logoContainer: {
+        width: 100, //Largeur de l'image
+        alignContent:"center",
+        textAlign: "center"
+    },
+    navBarButtonSize: {
+        width:100,
+        flexDirection: "row"
+    },
+    iconSize: {
+        width: 20,
+        height: 20,
+        marginRight: 5,
+        tintColor:"white",
+        resizeMode: "contain"
+    }
+});
