@@ -12,8 +12,7 @@ const Header = props => {
   
     
     const toggleOpen = () => {
-      console.log(state)
-      if(state.open == false) {
+      if(state.open === false) {
         setState({...state, open: true})
       } else {
         setState({...state, open:false})
@@ -28,7 +27,7 @@ const Header = props => {
           <Link to='/' component={TouchableOpacity} style={styles.ButtonStyleTop}>
             <Text style={styles.textParam}>Home</Text>
           </Link>
-          <TouchableOpacity onPress={toggleOpen} style={styles.ButtonStyleBottom}>
+          <TouchableOpacity onPress={() => console.log("cliqué ?")} style={styles.ButtonStyleBottom}>
             <Text style={styles.textParam}>Faves</Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={toggleOpen} style={styles.ButtonStyleBottom}>
@@ -39,6 +38,7 @@ const Header = props => {
     };
     return (
       <>
+        <View style={styles.container}>
             <View style={styles.navBarBg}>
               <View style={styles.beginEndNavBar}>
                 <Hamburger style="spinCross" 
@@ -47,24 +47,25 @@ const Header = props => {
                            underlayColor="transparent"
                            color="#FFF"/>
               </View>
-                <Text style={{flex:4}}></Text>
+                <Text style={{ flex:4 }}></Text>
                 <View style={styles.beginEndNavBar}>
                   <Text style={styles.textParam}>logo ?</Text>
                 </View>
 
             </View>
-            <View style={styles.container}>
-                <MenuDrawer 
-                        open={state.open} 
-                        drawerContent={drawerContent()}
-                        drawerPercentage={45}
-                        animationTime={250}
-                        overlay={true}
-                        opacity={0.4}
-                        >
-                  
-                </MenuDrawer>                 
-            </View>
+            <MenuDrawer 
+                    open={state.open} 
+                    drawerContent={drawerContent()}
+                    drawerPercentage={45}
+                    animationTime={250}
+                    overlay={true}
+                    opacity={0.4}
+                    >
+              
+            </MenuDrawer>
+            {props.children}
+            {/* props.children permet de faire en sorte que la balise header puisse englober d'autres composants : <Header>AutreCompo</Header>  */}
+        </View>
       </>
     );
 
@@ -72,78 +73,62 @@ const Header = props => {
 }
 
 export default Header;
-
-
 const textColor = {
-  color:'white'
-}
+  color: "white",
+};
 
 const ButtonCSS = {
-  height:75,
-  paddingTop:20,
-  paddingBottom:20, 
-  alignContent:'center', 
-  alignItems:'center',
-  textAlign: 'center',
-  justifyContent: 'center',
-  borderStyle:'solid',
-  elevation:1
-}
+  height: 75,
+  paddingTop: 20,
+  paddingBottom: 20,
+  alignContent: "center",
+  alignItems: "center",
+  textAlign: "center",
+  justifyContent: "center",
+  borderStyle: "solid",
+};
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "red",
+    zIndex: 0, // fait en sorte que le conteneur du header soit en dessous de tout
+  },
   navBarBg: {
-    flexDirection: 'row',
-    backgroundColor: '#383838',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    backgroundColor: "#383838",
+    justifyContent: "space-between",
     height: 70,
-    zIndex: 2,
-    elevation:2,
-    position: "relative"
+    zIndex: 2, // fait en sorte que la navbar soit au-desus du reste
   },
   beginEndNavBar: {
-    flex:1,
-    alignContent: 'center',
-    textAlign:'center',
-    justifyContent:'center',
-    alignItems: 'center',
-    padding: 5
+    flex: 1,
+    alignContent: "center",
+    textAlign: "center",
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 5,
   },
   textParam: {
     ...textColor,
-    fontWeight: 'bold'
+    fontWeight: "bold",
   },
-  container: {
-    flex: 6,
-    backgroundColor: '#606060',
-    alignItems: 'center',
-    justifyContent: 'center',
-    position: "absolute",
-    top: 0,
-    bottom:0,
-    zIndex:1,
-    elevation: 1,
-    paddingTop: 70,
-},
-animatedBox: { 
+  animatedBox: {
     flex: 1,
     backgroundColor: "#383838",
-    paddingTop: 70,
-    top: 0,
-    bottom:0,
-    elevation: 5
   },
   body: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
   ButtonStyleTop: {
     ...ButtonCSS,
     borderTopWidth: 2,
-    borderBottomWidth:2,
+    borderBottomWidth: 2,
+    marginTop: 70,
   },
   ButtonStyleBottom: {
     ...ButtonCSS,
-    borderBottomWidth: 2
-  }
-});
+    borderBottomWidth: 2,
+  }});

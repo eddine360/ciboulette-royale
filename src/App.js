@@ -17,15 +17,16 @@ export default class App extends React.Component {
         return (
             <>
                 <StatusBar backgroundColor="#383838"/>
-                <Router>
-                    <Header/>
-                    <View style={styles.container}>
+                <Header>
+                    <Router>
+                        <View style={styles.container}>
 
-                        <Text style={{color: 'white', fontWeight:'bold'}}>Automatic pull request working</Text>
-                        {/* <Route exact path="/" component={} */}
-                    </View>
+                            <Text style={{color: 'white', fontWeight:'bold'}}>Automatic pull request working</Text>
+                            {/* <Route exact path="/" component={} */}
+                        </View>
 
-                </Router>
+                    </Router>
+                </Header>
             </>
         );
     }
@@ -37,8 +38,6 @@ const styles = StyleSheet.create({
         backgroundColor: '#606060',
         alignItems: 'center',
         justifyContent: 'center',
-        zIndex: 0,
-        elevation:0
     },
     animatedBox: {
         flex: 1,
