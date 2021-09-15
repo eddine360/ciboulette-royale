@@ -21,22 +21,21 @@ function App() {
         return () => mounted = false;
     }, []);
 
-        return (
-            <>
-                <StatusBar backgroundColor="#383838"/>
-                <Header>
-                    <Router>
-                        <View style={styles.container}>
+    return (
+        <>
+            <StatusBar backgroundColor="#383838"/>
+            <Header>
+                <Router>
+                    <View style={styles.container}>
 
-                            <Text style={{color: 'white', fontWeight:'bold'}}>Automatic pull request working</Text>
-                            {/* <Route exact path="/" component={} */}
-                        </View>
+                        <Text style={{color: 'white', fontWeight:'bold'}}>Automatic pull request working</Text>
+                        {/* <Route exact path="/" component={} */}
+                    </View>
 
-                    </Router>
-                </Header>
-            </>
-        );
-    }
+                </Router>
+            </Header>
+        </>
+    );
 }
 
 const styles = StyleSheet.create({
