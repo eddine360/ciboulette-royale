@@ -2,9 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, StatusBar, TouchableOpacity } from 'react-native';
 import { Router, Route, Link } from './components/routing/routing';
 import Header from './components/header/header';
-import Map from './components/map/map';
-
-export default class App extends React.Component {
+import Menu from './components/menuList/menuList'
+import { getDetailsForLyon } from './services/lyon';
 
 function App() {
     useEffect(() => {
@@ -14,11 +13,12 @@ function App() {
     return (
         <>
             <StatusBar backgroundColor="#383838"/>
-            <Router>
-                <Header/>
-                <View style={styles.container}>
-                     <Route path="/map/:city" component={Map} />
-                </View>
+                <Router>
+            <Header>
+                    <View style={styles.container}>
+
+                        <Route exact path="/" component={Menu}/>
+                    </View>
 
             </Router>
         </>
