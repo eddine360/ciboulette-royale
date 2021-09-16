@@ -56,7 +56,9 @@ const Header = props => {
               </View>
                 <Text style={{ flex:4 }}></Text>
                 <View style={styles.beginEndNavBar}>
-                  <Text style={styles.textParam}>logo ?</Text>
+                  <Link to="/" component={TouchableOpacity}>
+                    <Text style={styles.textParam}>logo ?</Text>
+                  </Link>
                 </View>
 
             </View>
