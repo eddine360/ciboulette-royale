@@ -7,19 +7,8 @@ import Map from './components/map/map';
 import { getDetailsForLyon } from './services/lyon';
 
 function App() {
-    const [list, setList] = useState([]);
-
     useEffect(() => {
-        let mounted = true;
 
-        // Load map details for Lyon when the component is loading
-        getDetailsForLyon()
-            .then(items => {
-                if (mounted) {
-                    setList(items.features);
-                }
-            });
-        return () => { mounted = false; };
     }, []);
 
     return (
@@ -28,7 +17,7 @@ function App() {
             <Router>
                 <Header/>
                 <View style={styles.container}>
-                     <Route exact path="/map" component={Map} />
+                     <Route path="/map/:city" component={Map} />
                 </View>
 
             </Router>

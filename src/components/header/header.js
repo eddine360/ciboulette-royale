@@ -36,7 +36,7 @@ export default class Header extends React.Component {
                       <TouchableOpacity onPress={this.toggleOpen} style={styles.beginEndNavBar}>
                           <Text style={styles.textParam}>{this.state.textBurger}</Text>
                       </TouchableOpacity>
-                    <Link to={'/map'}><Text style={{flex:4}}>Map</Text></Link>
+                    <Link to={`/map/lyon`}><Text style={{flex:4}}>Map</Text></Link>
                     <View style={styles.beginEndNavBar}>
                       <Text style={styles.textParam}>logo ?</Text>
                     </View>
