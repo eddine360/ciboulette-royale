@@ -38,25 +38,6 @@ const menuList = props => {
             setState({...state, cities:filterCities})
     }
 
-
-
-    // const renderItemList = ({item}) => {
-    //     const fave = require("../../../assets/header/fave.png");
-
-    //     return(
-    //         <>
-    //             <Link to={`/map/${item.ville}`} component={TouchableOpacity} style={styles.cardList}>
-    //                 <View style={styles.villeName}>
-    //                     <Text style={styles.textNomVille}>{item.ville}</Text>
-    //                 </View>
-    //                 <TouchableOpacity style={styles.containerFave} onPress={() => console.log(this)}>
-    //                     <Image style={styles.faveIcon} source={fave}/>
-    //                 </TouchableOpacity>
-    //             </Link>
-    //         </>
-    //     );
-    // }
-
     return(
         <>
         <View style={{...StyleSheet.absoluteFill}}>
@@ -89,7 +70,6 @@ const CardElement = props => {
             setTint("grey")
         }
     }
-
     return(
         <>
             <Link to={`/map/${props.ville}`} component={TouchableOpacity} style={styles.cardList}>
